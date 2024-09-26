@@ -13,7 +13,7 @@ export function InviteGuestsModal({
     addNewGuest,
     closeGuestsModal,
     deleteGuest,
-    guestsToInvite
+    guestsToInvite,
 }: InviteGuestsModalProps){
     return(
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center"> 
@@ -45,7 +45,10 @@ export function InviteGuestsModal({
 
                 <form onSubmit={addNewGuest} className="p-2.5 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2">
                 <AtSign className="size-5 text-zinc-400"/>
-                <input name="email" type="text" placeholder='Guest email' className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"/>
+                <input 
+                    name="email" 
+                    type="text" 
+                    placeholder='Guest email' className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"/>
                 <Button type="submit">
                     Invite 
                     <Plus className="size-5"/>

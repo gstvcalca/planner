@@ -17,7 +17,7 @@ export function GuestsInput({
 
         <button onClick={openGuestsModal} className="flex items-center gap-2 flex-1 hover:underline">
             <UserRoundPlus className="size-5 text-zinc-400"/>
-            <span className="text-zinc-400 text-lg flex-1 text-left truncate">{guestsToInvite.length > 1 ? guestsToInvite.join(', ') : "Who will be on the trip?"}</span>
+            <span className="text-zinc-400 text-lg flex-1 text-left truncate">{guestsToInvite.length > 1 ? guestsToInvite.length.toString() + ' guest(s)' : "Who will be on the trip?"}</span>
         </button>
 
         <Button onClick={openConfirmTripModal}>

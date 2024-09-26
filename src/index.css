@@ -9,3 +9,10 @@
 input {
     color-scheme: dark
 }
+
+.rdp-root {
+    --rdp-accent-color: #BEF264; /* Change the accent color to lime-300. */
+    --rdp-accent-background-color: #1A2E05; /* Change the accent background color. */
+    --rdp-range_start-color: #18181b;
+    /* Add more CSS variables here. */
+}
