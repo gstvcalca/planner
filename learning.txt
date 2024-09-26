@@ -1,0 +1,27 @@
+# PARA CRIAR UM PROJETO USANDO VITE:
+	npm create vite@latest
+	mudar pra pasta
+	npm i
+
+# configurações iniciais:
+	remover tudo do app.tsx, deixar apenas um return h1 hello world
+	excluir arquivos css e as importações
+	renomear arquivo app para letra minúscula
+
+# React exige que as funções que retornam HTML começem com letra maiúscula
+# CTRL SHIFT P > restart ES server para corrigir as importações
+
+# instalar tailwind
+	npm install -D tailwindcss postcss autoprefixer
+	npx tailwindcss init -p
+	atuailzar arquivo tailwind.config
+
+# para instalar uma fonte:
+	copiar embed code do google fonts e colar no head do arquivo index.html
+	no arquivo tailwind config css: theme : extend: font family: sans: inter
+
+# para usar uma imagem de plano de fundo:
+	Adicionar no tailwind.config.theme.extend
+	backgroundImage: {
+        pattern: 'url(/bg.png)'
+      }
