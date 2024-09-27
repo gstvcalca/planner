@@ -25,7 +25,7 @@ export function TripDetailsPage(){
                 
                 <div className="flex-1 space-y-6"> 
                     <div className="flex items-center justify-between"> 
-                        <h2 className="text-3xl font-semibold">Atividades</h2>
+                        <h2 className="text-3xl font-semibold">Activities</h2>
                         <Button onClick={openActivityModal}>
                             Add
                             <Plus className="size-5"/>
