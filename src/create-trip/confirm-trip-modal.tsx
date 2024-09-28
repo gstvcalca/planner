@@ -1,19 +1,24 @@
 import { ArrowRight, Mail, User, X } from "lucide-react"
 import { FormEvent } from "react"
 import { Button } from "../components/button"
+import { format } from "date-fns"
 
 interface ConfirmTripModalProps{
     closeConfirmTripModal: () => void
     createTrip: (event: FormEvent<HTMLFormElement>) => void
     setOwnerName: (name: string) => void
     setOwnerEmail: (email: string) => void
+    destination: string
+    starts_at: string
 }
 
 export function ConfirmTripModal({
     closeConfirmTripModal,
     createTrip,
     setOwnerEmail,
-    setOwnerName
+    setOwnerName,
+    destination,
+    starts_at
     }: ConfirmTripModalProps){
     return (
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center"> 
@@ -27,8 +32,8 @@ export function ConfirmTripModal({
                     </div>
                     <p className="text-sm text-zinc-400">
                         To confirm the booking of your trip to 
-                        <span className="font-semibold text-zinc-100">Threbo, AU</span> on 
-                        <span className="font-semibold text-zinc-100">Dec 15</span>, please fill the fields below:
+                        <span className="font-semibold text-zinc-100"> {destination}</span> on 
+                        <span className="font-semibold text-zinc-100"> {format(starts_at, "LLL', 'do")}</span>, please fill the fields below:
                     </p>
                 </div>              
                 <form onSubmit={createTrip} className="space-y-3">

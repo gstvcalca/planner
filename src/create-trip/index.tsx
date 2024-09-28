@@ -140,6 +140,8 @@ export function CreateTripPage(){
             createTrip={createTrip}
             setOwnerName={setOwnerName}
             setOwnerEmail={setOwnerEmail}
+            destination={destination}
+            starts_at={eventDateObj?.from?.toString() || ''}
             />
         )}
         </div>
