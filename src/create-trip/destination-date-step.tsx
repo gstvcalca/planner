@@ -73,6 +73,9 @@ export function DestinationDateStep({
                                 </div>
                             </div>
                             <DayPicker mode="range" selected={eventDateObj} onSelect={setEventDateObj}/>
+                            <div>
+                                <Button onClick={closeDatePicker} size="full">Done</Button>
+                            </div>
                         </div>
                     </div>
                 )}
