@@ -24,7 +24,7 @@ export function DestinationHeader(){
     }, [id])
 
     const displayDate = trip && trip.starts_at && trip.ends_at
-        ? format(trip.starts_at, 'd/LLL').concat(' to ').concat(format(trip.ends_at, 'd/LLL/yy'))
+        ? format(trip.starts_at, "'From 'do' of 'LLLL").concat(' to ').concat(format(trip.ends_at, "do' of 'LLLL, yyyy"))
         : null
 
     return(
