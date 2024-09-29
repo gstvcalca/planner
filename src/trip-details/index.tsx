@@ -6,9 +6,13 @@ import { GuestsList } from "./guests-list";
 import { Activities } from "./activities";
 import { DestinationHeader } from "./destination-header";
 import { Button } from "../components/button";
+import { AddGuestModal } from "./add-guest-modal";
+import { AddLinkModal } from "./add-link-modal";
 
 export function TripDetailsPage(){
     const [isNewActivityModalOpen, setNewActivityModal] = useState(false);
+    const [isAddGuestModalOpen, setAddGuestModal] = useState(false);
+    const [isAddLinkModalOpen, setAddLinkModal] = useState(false);
 
     function closeActivityModal(){
         setNewActivityModal(false);
@@ -16,6 +20,22 @@ export function TripDetailsPage(){
     
     function openActivityModal(){
         setNewActivityModal(true);
+    }
+
+    function closeAddGuestModal(){
+        setAddGuestModal(false);
+    }
+
+    function openAddGuestModal(){
+        setAddGuestModal(true);
+    }
+
+    function openAddLinkModal(){
+        setAddLinkModal(true);
+    }
+
+    function closeAddLinkModal(){
+        setAddLinkModal(false);
     }
 
     return (
@@ -35,9 +55,9 @@ export function TripDetailsPage(){
                 </div>
 
                 <div className="w-80 space-y-6">
-                    <RelevantLinks/>
+                    <RelevantLinks openAddLinkModal={openAddLinkModal}/>
                     <div className="w-full h-px bg-zinc-800"/>
-                    <GuestsList/>                    
+                    <GuestsList openAddGuestModal={openAddGuestModal}/>                    
                 </div>
 
             </main>
@@ -45,6 +65,15 @@ export function TripDetailsPage(){
             {isNewActivityModalOpen && (
                 <CreateActivityModal closeActivityModal={closeActivityModal}/>
             )}
+
+            {isAddGuestModalOpen && (
+                <AddGuestModal closeAddGuestModal={closeAddGuestModal}/>
+            )}
+
+            {isAddLinkModalOpen && (
+                <AddLinkModal closeAddLinkModal={closeAddLinkModal}/>
+            )}
+
         </div>
     )
 } 
