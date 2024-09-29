@@ -13,10 +13,15 @@ interface tripProps{
     is_confirmed: boolean
 }
 
+interface DestinationHeaderProps{
+    openChangeDestinationModal: () => void
+}
 
-export function DestinationHeader(){
+
+export function DestinationHeader({openChangeDestinationModal}: DestinationHeaderProps){
     const { id } = useParams()
     const [trip, setTrip] = useState<tripProps | undefined>()
+ 
 
     useEffect(() => {
         console.log(id);
@@ -35,7 +40,7 @@ export function DestinationHeader(){
             <span className="text-zinc-100">{trip?.destination}</span>
         </div>
 
-        <div className="flex items-center gap-5">
+        <div onClick={openChangeDestinationModal} className="flex items-center gap-5">
             <div className="flex items-center gap-2">
                 <Calendar className="size-5 text-zinc-400"/> 
                 <span className="text-zinc-100">{displayDate}</span>
