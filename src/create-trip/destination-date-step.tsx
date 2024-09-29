@@ -40,15 +40,15 @@ export function DestinationDateStep({
     return (
         <div className="h-16 bg-zinc-900 px-4 rounded-xl flex items-center shadow-shape gap-3">
                 <div className="flex items-center gap-2 flex-1">
-                <MapPin className="size-5 text-zinc-400"/>
-                <input
-                    onChange={(event) => {setDestination(event.target.value)}}
-                    disabled={isGuestsInputOpen} 
-                    type="text" 
-                    name="" 
-                    id="" 
-                    placeholder="Where to?" 
-                    className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-grow"/>
+                    <MapPin className="size-5 text-zinc-400"/>
+                    <input
+                        onChange={(event) => {setDestination(event.target.value)}}
+                        disabled={isGuestsInputOpen} 
+                        type="text" 
+                        name="" 
+                        id="" 
+                        placeholder="Where to?" 
+                        className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-grow"/>
                 </div>
 
                 <button
