@@ -27,7 +27,7 @@ export function RelevantLinks({openAddLinkModal}: RelevantLinksProps){
             <h2 className="font-semibold text-xl">Relevant links</h2>
             {links.map((link) => {
                 return(
-                    <div className="flex items-center justify-between gap-4"> {/* links list */}
+                    <div key={link.id} className="flex items-center justify-between gap-4"> {/* links list */}
                         <div className="flex-1">
                             <span className="block font-medium text-zinc-100">{link.title}</span>
                             <a href={link.url} className="truncate block text-zinc-400 text-xs hover:text-zinc-200">

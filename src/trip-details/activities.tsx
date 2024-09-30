@@ -28,7 +28,7 @@ export function Activities(){
         <div className="space-y-8 "> 
         {schedule.map((aDaySchedule) => {
             return(
-                <div className="space-y-2.5"> {/* Day card div */}
+                <div key={aDaySchedule.date} className="space-y-2.5"> {/* Day card div */}
 
                 <div className="flex gap-2 items-baseline"> {/* card title div */}
                     <span className="text-xl text-zinc-300 font-semibold">{format(aDaySchedule.date, "do' of 'MMMM")}</span>
@@ -38,7 +38,7 @@ export function Activities(){
                 ? <p className="text-zinc-500">No activities booked for this day.</p>
                 : (aDaySchedule.activities.map(activity => {
                     return (
-                        <div className=""> {/* activity card */}
+                        <div key={activity.id} className=""> {/* activity card */}
                             <div className="flex justify-between bg-zinc-900 p-1 rounded-lg shadow-shape px-4 py-2.5 items-center">
                                 <div className="flex gap-3 text-zinc-100">
                                     <CheckCircle2 className="text-lime-300 size-6"/>

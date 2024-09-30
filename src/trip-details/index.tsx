@@ -1,5 +1,5 @@
 import { Plus} from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CreateActivityModal } from "./activity-modal";
 import { RelevantLinks } from "./relevant-links";
 import { GuestsList } from "./guests-list";
@@ -9,12 +9,22 @@ import { Button } from "../components/button";
 import { AddGuestModal } from "./add-guest-modal";
 import { AddLinkModal } from "./add-link-modal";
 import { ChangeDestinationModal } from "./change-destination-modal";
+import { TripProps } from "../components/trip-props";
+import { useParams } from "react-router";
+import { api } from "../lib/axios";
 
 export function TripDetailsPage(){
+    const {id} = useParams();
     const [isNewActivityModalOpen, setNewActivityModal] = useState(false);
     const [isAddGuestModalOpen, setAddGuestModal] = useState(false);
     const [isAddLinkModalOpen, setAddLinkModal] = useState(false);
     const [isChangeDestinationModalOpen, setChangeDestinationModal] = useState(false);
+    const [tripInfo, setTripInfo] = useState<TripProps | undefined>();
+
+    useEffect(() => {
+        console.log(id);
+        api.get(`/trips/${id}`).then((response) => setTripInfo(response.data.trip))
+    }, [id])
 
     function closeActivityModal(){
         setNewActivityModal(false);
@@ -50,7 +60,9 @@ export function TripDetailsPage(){
 
     return (
         <div className="max-w-6xl px-6 py-10 mx-auto space-y-8">
-            <DestinationHeader openChangeDestinationModal={openChangeDestinationModal}/>
+            <DestinationHeader 
+                openChangeDestinationModal={openChangeDestinationModal}
+                tripInfo={tripInfo}/>
             <main className="flex gap-16 px-6">
                 
                 <div className="flex-1 space-y-6"> 
@@ -86,7 +98,8 @@ export function TripDetailsPage(){
 
             {isChangeDestinationModalOpen && (
                 <ChangeDestinationModal
-                    closeChangeDestinationModal={closeChangeDestinationModal}/>
+                    closeChangeDestinationModal={closeChangeDestinationModal}
+                    tripInfo={tripInfo}/>
             )}
 
         </div>

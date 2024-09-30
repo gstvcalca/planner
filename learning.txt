@@ -25,3 +25,16 @@
 	backgroundImage: {
         pattern: 'url(/bg.png)'
       }
+
+
+#TODO:
+	pagina login usuarios
+	modal criar usuario
+	rota criar usuario
+	função criar usuario
+
+	pagina feed
+	rota listar viagens ->
+		todas as viagens
+		minhas viagens
+	exibir viagens no feed
