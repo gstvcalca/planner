@@ -2,8 +2,10 @@ import { Plus } from "lucide-react";
 import { Button } from "../components/button";
 import { CreateUserModal } from "./create-user-modal";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 export function SelectUserPage(){
+    const navigate = useNavigate();
     const [isCreateUserModalOpen, setIsCreateUserModal] = useState(false);
 
     function openCreateUserModal(){
@@ -12,6 +14,10 @@ export function SelectUserPage(){
 
     function closeCreateUserModal(){
         setIsCreateUserModal(false);
+    }
+
+    function handleNavigate(){
+        navigate('/feed/123');
     }
 
     return(
@@ -24,7 +30,8 @@ export function SelectUserPage(){
             </div>
             <div className="flex justify-center my-10">
             <div className="grid grid-cols-3 gap-4">
-                <button 
+                <button
+                    onClick={handleNavigate}
                     className="w-52 rounded-xl shadow-shape border-2 border-zinc-400 space-y-2 text-center hover:scale-105 p-3">
                         <img 
                             className=" border-zinc-800 border-2 rounded-full"

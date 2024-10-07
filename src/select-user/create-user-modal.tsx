@@ -1,13 +1,14 @@
-import { X, User, Mail, ArrowRight } from "lucide-react";
+import { X, User, Mail, Plus, Image } from "lucide-react";
 import { Button } from "../components/button";
+import { FormEvent } from "react";
 
 interface CreateUserModalProps{
     closeCreateUserModal: () => void
 }
 
 export function CreateUserModal({closeCreateUserModal}: CreateUserModalProps){
-    function createUser(){
-
+    function createUser(event: FormEvent<HTMLFormElement>){
+        event.preventDefault();
     }
     return(
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center"> 
@@ -24,23 +25,28 @@ export function CreateUserModal({closeCreateUserModal}: CreateUserModalProps){
                     <div className="p-2.5 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2 h-14">
                         <User className="size-5 text-zinc-400"/>
                         <input
-                            //onChange={(event) => setOwnerName(event.target.value)}
                             name="name" 
-                            placeholder='Your name' 
+                            placeholder='Name' 
                             className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"/>
                     </div>
                     <div className="p-2.5 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2 h-14">
                         <Mail className="size-5 text-zinc-400"/>
                         <input
-                            //onChange={(event) => setOwnerEmail(event.target.value)}
                             type="email" 
                             name="email" 
-                            placeholder='Your email' 
+                            placeholder='Email' 
                             className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"/>
-                    </div>  
+                    </div>
+                    <div className="p-2.5 bg-zinc-950 border border-zinc-800 rounded-lg flex items-center gap-2 h-14">
+                        <Image className="size-5 text-zinc-400"/>
+                        <input
+                            name="url" 
+                            placeholder='Image URL' 
+                            className="bg-transparent text-lg placeholder-zinc-400 outline-none flex-1"/>
+                    </div> 
                     <Button type="submit" size='full'>
-                        Confirm trip    
-                        <ArrowRight className="size-5"/>
+                        Create new user    
+                        <Plus className="size-5"/>
                     </Button>
                 
                 </form>

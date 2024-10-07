@@ -6,6 +6,7 @@ import {
 import { CreateTripPage } from "./create-trip";
 import { TripDetailsPage } from "./trip-details";
 import { SelectUserPage } from "./select-user";
+import { FeedPage } from "./feed";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
     path: "/trips/:id",
     element: <TripDetailsPage/>,
   },
+  {
+    path: "/feed/:id",
+    element: <FeedPage/>
+  }
 ]);
 
 export function App(){
