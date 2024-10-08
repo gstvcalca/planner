@@ -1,4 +1,4 @@
-import { Plus} from "lucide-react";
+import { Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CreateActivityModal } from "./activity-modal";
 import { RelevantLinks } from "./relevant-links";
@@ -60,6 +60,7 @@ export function TripDetailsPage(){
 
     return (
         <div className="max-w-6xl px-6 py-10 mx-auto space-y-8">
+            
             <DestinationHeader 
                 openChangeDestinationModal={openChangeDestinationModal}
                 tripInfo={tripInfo}/>
