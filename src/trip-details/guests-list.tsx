@@ -28,7 +28,7 @@ export function GuestsList({openAddGuestModal}: GuestsListProps){
             <h2 className="font-semibold text-xl">Guests</h2>
             {guests.map((guest, index) => {
                 return (
-                    <div key={guest.email} className="flex items-center justify-between gap-4"> {/* links list */}
+                    <div key={guest.email + index} className="flex items-center justify-between gap-4"> {/* links list */}
                         <div className="flex-1">
                             <span className="block font-medium text-zinc-100">{guest.name || "Guest " + index}</span>
                             <span className="truncate block text-zinc-400 text-sm">
