@@ -38,3 +38,7 @@
 		todas as viagens
 		minhas viagens
 	exibir viagens no feed
+
+	teste
+
+	
