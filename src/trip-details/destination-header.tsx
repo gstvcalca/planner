@@ -29,7 +29,7 @@ export function DestinationHeader({
     return(
         <div className="px-4 h-16 rounded-xl bg-zinc-900 shadow-shape flex items-center justify-between">
             <img className="-translate-x-52 absolute -translate-y-4" src="/logo.svg" alt="plann.er"/>
-            <button onClick={handleNavigate} className="hover:text-zinc-400 ">
+            <button onClick={handleNavigate} className="hover:text-zinc-400 absolute">
                 <ArrowLeftCircle className="-translate-x-32 absolute translate-y-2 size-8"/>
             </button>
             <div className="flex items-center gap-2">
