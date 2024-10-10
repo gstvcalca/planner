@@ -17,6 +17,14 @@ interface RelevantLinksProps{
 export function RelevantLinks({openAddLinkModal}: RelevantLinksProps){
     const {id} = useParams();
     const [links, setLinks] = useState<LinkProps[]>([]);
+    const infosObj = {
+        "Where do we meet": 'Some place',
+        'Budget': "$1000.00",
+        'Confirmed': '16',
+    }
+
+    const infosArr = Object.entries(infosObj);
+    
 
     useEffect(() => {
         api.get(`/trips/${id}/links`).then((response) => {setLinks(response.data.links)})
@@ -24,7 +32,18 @@ export function RelevantLinks({openAddLinkModal}: RelevantLinksProps){
 
     return (
         <div className="space-y-6">
-            <h2 className="font-semibold text-xl">Relevant links</h2>
+            <h2 className="font-semibold text-xl">Relevant info</h2>
+            {infosArr.map((info) => {
+                return (
+                    <div key={info[0]} className="flex justify-between">
+                        <span>{info[0]}</span>
+                        <span>{info[1]}</span>
+                    </div>
+                    )}
+                    
+                )
+            }
+           
             {links.map((link) => {
                 return(
                     <div key={link.id} className="flex items-center justify-between gap-4"> {/* links list */}
