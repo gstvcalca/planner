@@ -1,4 +1,4 @@
-import { Plus} from "lucide-react";
+import { Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { CreateActivityModal } from "./activity-modal";
 import { RelevantLinks } from "./relevant-links";
@@ -60,12 +60,21 @@ export function TripDetailsPage(){
 
     return (
         <div className="max-w-6xl px-6 py-10 mx-auto space-y-8">
+            
             <DestinationHeader 
                 openChangeDestinationModal={openChangeDestinationModal}
                 tripInfo={tripInfo}/>
             <main className="flex gap-16 px-6">
                 
                 <div className="flex-1 space-y-6"> 
+                
+                <div className="flex-1">
+                    {/* Destination from x to y, number of guests, picture */}
+                        <img src="\wallhaven-43gm9n.jpg" className="rounded-xl"/>
+                    <p className="text-justify p-2 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non        laoreet risus, a tristique ipsum. Aliquam ac risus nisi. Sed porta euismod massa eget ultricies. Donec consequat non lectus a malesuada. Quisque scelerisque mattis diam vitae vehicula. Fusce eleifend ipsum vel nibh eleifend finibus. Donec odio nunc, scelerisque ut euismod sit amet, pellentesque vel nulla. Nam eu ultricies sapien. Praesent suscipit accumsan condimentum</p>
+
+                </div>
+
                     <div className="flex items-center justify-between"> 
                         <h2 className="text-3xl font-semibold">Activities</h2>
                         <Button onClick={openActivityModal}>
@@ -73,6 +82,7 @@ export function TripDetailsPage(){
                             <Plus className="size-5"/>
                         </Button>
                     </div>
+                    
                     <Activities/>
                 </div>
 
