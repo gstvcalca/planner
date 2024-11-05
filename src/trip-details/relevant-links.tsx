@@ -17,14 +17,26 @@ interface RelevantLinksProps{
 export function RelevantLinks({openAddLinkModal}: RelevantLinksProps){
     const {id} = useParams();
     const [links, setLinks] = useState<LinkProps[]>([]);
-    const infosObj = {
-        "Where do we meet": 'Some place',
-        'Budget': "$1000.00",
-        'Confirmed': '16',
-    }
-
-    const infosArr = Object.entries(infosObj);
-    
+    const infosObj = [{
+        "type": "info",
+        "title": "Where do we meet?",
+        "info": 'Some place'
+    },
+    {
+        "type": "info",
+        "title": "Budget",
+        'info': "$1000.00"
+    },
+    {
+        "type": "info",
+        "title": "Confirmed",
+        'info': '16',
+    },
+    {
+        "type": "url",
+        "title": "AirBnB",
+        "info": "https://airBnB.com"
+    }]    
 
     useEffect(() => {
         api.get(`/trips/${id}/links`).then((response) => {setLinks(response.data.links)})
@@ -33,13 +45,27 @@ export function RelevantLinks({openAddLinkModal}: RelevantLinksProps){
     return (
         <div className="space-y-6">
             <h2 className="font-semibold text-xl">Relevant info</h2>
-            {infosArr.map((info) => {
+            {infosObj.map((info) => {
+                if(info.type === "info"){
                 return (
-                    <div key={info[0]} className="flex justify-between">
-                        <span>{info[0]}</span>
-                        <span>{info[1]}</span>
+                    <div key={info.title + info.type} className="flex justify-between">
+                        <span>{info.title}</span>
+                        <span>{info.info}</span>
                     </div>
                     )}
+                else {
+                    return(
+                        <div key={info.title + info.type} className="flex items-center justify-between gap-4"> {/* links list */}
+                            <div className="flex-1">
+                                <span className="block font-medium text-zinc-100">{info.title}</span>
+                                <a href={info.info} className="truncate block text-zinc-400 text-xs hover:text-zinc-200">
+                                    {info.info}
+                                </a>
+                            </div>
+                            <a href={info.info}><Link2 className="text-zinc-400 size-5 shrink-0"/></a>
+                        </div>
+                    )
+                }}
                     
                 )
             }
