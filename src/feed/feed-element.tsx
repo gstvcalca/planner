@@ -7,7 +7,7 @@ export function FeedElement(){
         navigate('/trips/fd1b3e35-5674-468b-bc18-331570215381')
     }
     return(
-        <div className="flex-1 text-center p-3 space-y-3 shadow-shape rounded-xl">
+        <div className="flex-1 text-center p-3 space-y-3 shadow-shape rounded-xl border-2 border-zinc-700">
                     <div className="space-y-2 flex-1">
                         <div className="flex justify-between items-center">
                             {/* profile picture, name and date */}
