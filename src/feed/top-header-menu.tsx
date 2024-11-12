@@ -1,4 +1,4 @@
-import { Search, Home, ContactRound, Menu, MessageCircle, Bell, Plus } from "lucide-react";
+import { Search, Home, ContactRound, Bell, Plus } from "lucide-react";
 import { useNavigate } from "react-router";
 
 export function TopHeaderMenu(){
@@ -34,14 +34,6 @@ export function TopHeaderMenu(){
 
                 <div className="flex w-1/3 justify-end items-center space-x-5">
                     {/* right */}
-                    <button className="hover:text-zinc-50  hover:bg-zinc-700 p-2 rounded-xl">
-                        <Menu className="size-8"/>
-                    </button>
-
-                    <button className="hover:text-zinc-50  hover:bg-zinc-700 p-2 rounded-xl">
-                        <MessageCircle className="size-8" />
-                    </button>
-
                     <button className="hover:text-zinc-50  hover:bg-zinc-700 p-2 rounded-xl">
                         <Bell className="size-8"/>
                     </button>
