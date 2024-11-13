@@ -22,15 +22,18 @@ export function SelectUserPage(){
         navigate('/feed/123');
     }
 
-    const [users, setUsers] = useState<UserSchema[] | undefined>();
+    const [users, setUsers] = useState<UserSchema[] | undefined>([]);
 
     useEffect(() => {
-        api.get('/users').then((response) => setUsers(response.data));
+        api.get('/users').then((response) => setUsers(response.data.users));
         console.log(users);
     }, [window]);
 
-    function handleDelete(id:string){
-        console.log(id);
+    async function handleDelete(id:string){
+        const user = await api.delete('/users/' + id);
+
+        window.document.location.reload();
+        console.log(user);
     }
 
     return(
@@ -43,7 +46,7 @@ export function SelectUserPage(){
             </div>
             <div className="flex justify-center my-10">
             <div className="grid grid-cols-3 gap-4">
-                {users && users.map((user) => {
+            {users && users.map((user) => {
                     return (
                         <div
                             key={user._id}
@@ -55,7 +58,7 @@ export function SelectUserPage(){
                                 </img></button>
                                 <p className="p-3">{user.name}</p>
                                 <div className="justify-between flex px-6">
-                                    <button onClick={() => handleDelete(user._id)}><X className="text-red-600"/></button>
+                                <button onClick={() => handleDelete(user._id)}><X className="text-red-600"/></button>
                                     <button onClick={handleNavigate}><ArrowRightIcon className="text-green-600"/></button>
                                 </div>
                         </div>
