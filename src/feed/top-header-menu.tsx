@@ -13,7 +13,7 @@ export function TopHeaderMenu(){
                 <div className="flex w-1/3 justify-start items-center space-x-5">
                     {/* left */}
                     
-                    <div className="flex items-center bg-zinc-900 p-2 rounded-xl gap-2">
+                    <div className="flex items-center bg-zinc-900 p-2 rounded-xl gap-2 border-2 border-zinc-700">
                         <Search className="size-4"/>
                         <input className="bg-transparent outline-none" placeholder="Search on plann.er"/>
                     </div>
