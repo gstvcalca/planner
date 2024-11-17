@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     element: <TripDetailsPage/>,
   },
   {
-    path: "/feed/:id",
+    path: "/feed",
     element: <FeedPage/>
   }
 ]);
