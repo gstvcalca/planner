@@ -1,5 +1,5 @@
 export interface TripProps{
-    id: string
+    _id: string
     destination: string
     starts_at: string
     ends_at: string
@@ -11,5 +11,5 @@ export interface TripProps{
     infos: {title: string, description: string}[]
     links: {title: string, url: string}[]
     activities: {title: string, occurs_at: Date}[]
-    category: string[]
+    category: string
 }

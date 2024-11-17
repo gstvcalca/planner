@@ -9,7 +9,7 @@ export function ContactsMenu(){
         api.get('/users').then((reply) => {
             setUsers(reply.data.users);
         })
-    }, [window]);
+    }, []);
 
     return(
         

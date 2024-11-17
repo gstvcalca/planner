@@ -4,7 +4,13 @@ import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import { api } from "../lib/axios";
 
-export function FeedElement() {
+
+interface FeedElementProps{
+  currFilter: string
+  currSearch: string
+}
+
+export function FeedElement({currFilter, currSearch}: FeedElementProps) {
   const navigate = useNavigate();
   const [trips, setTrips] = useState<TripProps[]>([]);
 
@@ -14,17 +20,24 @@ export function FeedElement() {
     });
   }, []);
 
+  const displayTrips = trips.filter((trip) => {
+    const matchesCategory = trip.category === currFilter || currFilter === "all";
+    const matchesText = trip.destination.toLowerCase().includes(currSearch.toLowerCase());
+    return matchesCategory && matchesText;
+  })
+  
+
   return (
     <div className="flex-1 space-y-2">
-      {trips.map((trip) => {
+      {displayTrips.map((trip) => {
         const starts_at_string = format(trip.starts_at, "LLL, do");
         const ends_at_string = format(trip.ends_at, "LLL, do");
         function handleNavigate() {
-          navigate("/trips/" + trip.id);
+          navigate("/trips/" + trip._id);
         }
         return (
           <div
-            key={trip.id}
+            key={trip._id}
             className="flex-1 text-center p-3 space-y-3 shadow-shape rounded-xl border-2 border-zinc-700"
           >
             <div className="space-y-2 flex-1">
@@ -52,7 +65,7 @@ export function FeedElement() {
                 <div className="justify-start text-start mt-2">
                   {trip.infos.map((info) => {
                     return (
-                      <p key={trip.id + info.title}>
+                      <p key={trip._id + info.title}>
                         {info.title}: {info.description}
                       </p>
                     );
