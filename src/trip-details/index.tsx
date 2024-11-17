@@ -22,7 +22,6 @@ export function TripDetailsPage(){
     const [tripInfo, setTripInfo] = useState<TripProps | undefined>();
 
     useEffect(() => {
-        console.log(id);
         api.get(`/trips/${id}`).then((response) => setTripInfo(response.data.trip))
     }, [id])
 
@@ -69,10 +68,8 @@ export function TripDetailsPage(){
                 <div className="flex-1 space-y-6"> 
                 
                 <div className="flex-1">
-                    {/* Destination from x to y, number of guests, picture */}
-                        <img src="\wallhaven-43gm9n.jpg" className="rounded-xl"/>
-                    <p className="text-justify p-2 mt-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam non        laoreet risus, a tristique ipsum. Aliquam ac risus nisi. Sed porta euismod massa eget ultricies. Donec consequat non lectus a malesuada. Quisque scelerisque mattis diam vitae vehicula. Fusce eleifend ipsum vel nibh eleifend finibus. Donec odio nunc, scelerisque ut euismod sit amet, pellentesque vel nulla. Nam eu ultricies sapien. Praesent suscipit accumsan condimentum</p>
-
+                    <img src={tripInfo?.img_url} className="rounded-xl"/>
+                    <p className="text-justify p-2 mt-2">{tripInfo?.description}</p>
                 </div>
 
                     <div className="flex items-center justify-between"> 
@@ -83,13 +80,13 @@ export function TripDetailsPage(){
                         </Button>
                     </div>
                     
-                    <Activities/>
+                    <Activities tripInfo={tripInfo}/>
                 </div>
 
                 <div className="w-80 space-y-6">
-                    <RelevantLinks openAddLinkModal={openAddLinkModal}/>
+                    <RelevantLinks openAddLinkModal={openAddLinkModal} tripInfo={tripInfo}/>
                     <div className="w-full h-px bg-zinc-800"/>
-                    <GuestsList openAddGuestModal={openAddGuestModal}/>                    
+                    <GuestsList openAddGuestModal={openAddGuestModal} tripInfo={tripInfo}/>                    
                 </div>
 
             </main>

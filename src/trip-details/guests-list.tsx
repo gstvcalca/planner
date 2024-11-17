@@ -1,32 +1,17 @@
 import { CheckCircle2, CircleDashed, UserCog } from "lucide-react";
 import { Button } from "../components/button";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { api } from "../lib/axios";
+import { TripProps } from "../components/trip-props";
 
-interface GuestsProps{
-    id: string
-    name: string
-    email: string
-    is_confirmed: boolean
-}
 
 interface GuestsListProps{
     openAddGuestModal: () => void
+    tripInfo: TripProps | undefined
 }
-export function GuestsList({openAddGuestModal}: GuestsListProps){
-
-    const {id} = useParams();
-    const [guests, setGuests] = useState<GuestsProps[]>([]);
-
-    useEffect(() => {
-        api.get(`/trips/${id}/participants`).then((response) => {setGuests(response.data.participants)});
-    }, [id]);
-
+export function GuestsList({openAddGuestModal, tripInfo}: GuestsListProps){
     return (
         <div className="space-y-6">
             <h2 className="font-semibold text-xl">Guests</h2>
-            {guests.map((guest, index) => {
+            {tripInfo?.guests.map((guest, index) => {
                 return (
                     <div key={guest.email + index} className="flex items-center justify-between gap-4"> {/* links list */}
                         <div className="flex-1">

@@ -1,44 +1,27 @@
 import { CheckCircle2 } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import { api } from "../lib/axios";
 import { format } from 'date-fns';
+import { TripProps } from "../components/trip-props";
 
-interface ScheduleProps{
-    date: string
-    activities: {
-        id: string
-        title: string
-        occurs_at: string
-    }[]
+interface ActivitiesProps{
+    tripInfo: TripProps | undefined
 }
 
-export function Activities(){
-    const {id} = useParams()
-    const [schedule, setSchedule] = useState<ScheduleProps[]>([])
-
-    useEffect(() => {
-        api.get(`/trips/${id}/activities`).then((response) => {
-            setSchedule(response.data.activities);
-        });
-    }, [id])
-    
-
+export function Activities({tripInfo}: ActivitiesProps){
     return (
         <div className="space-y-8 "> 
-        {schedule.map((aDaySchedule) => {
+        {tripInfo?.activities.map((aDaySchedule) => {
             return(
-                <div key={aDaySchedule.date} className="space-y-2.5"> {/* Day card div */}
+                <div key={tripInfo._id + aDaySchedule.activity_date} className="space-y-2.5"> {/* Day card div */}
 
                 <div className="flex gap-2 items-baseline"> {/* card title div */}
-                    <span className="text-xl text-zinc-300 font-semibold">{format(aDaySchedule.date, "do' of 'MMMM")}</span>
-                    <span className="text-xs text-zinc-500">{format(aDaySchedule.date, 'EEEE')}</span>
+                    <span className="text-xl text-zinc-300 font-semibold">{format(aDaySchedule.activity_date, "do' of 'MMMM")}</span>
+                    <span className="text-xs text-zinc-500">{format(aDaySchedule.activity_date, 'EEEE')}</span>
                 </div>
-                {aDaySchedule.activities.length === 0 
+                {aDaySchedule.day_activities.length === 0 
                 ? <p className="text-zinc-500">No activities booked for this day.</p>
-                : (aDaySchedule.activities.map(activity => {
+                : (aDaySchedule.day_activities.map(activity => {
                     return (
-                        <div key={activity.id} className=""> {/* activity card */}
+                        <div key={tripInfo._id + activity.title} className=""> {/* activity card */}
                             <div className="flex justify-between bg-zinc-900 p-1 rounded-lg shadow-shape px-4 py-2.5 items-center">
                                 <div className="flex gap-3 text-zinc-100">
                                     <CheckCircle2 className="text-lime-300 size-6"/>
