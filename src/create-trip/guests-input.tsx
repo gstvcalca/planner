@@ -1,15 +1,16 @@
 import { ArrowRight, UserRoundPlus } from "lucide-react"
 import { Button } from "../components/button"
 
+
 interface GuestsInputProps{
     openGuestsModal: () => void
     guestsToInvite: string[]
-    openConfirmTripModal: () => void
+    createTrip: () => void
 }
 
 export function GuestsInput({
     guestsToInvite,
-    openConfirmTripModal,
+    createTrip,
     openGuestsModal    
 }: GuestsInputProps){
     return (
@@ -20,7 +21,7 @@ export function GuestsInput({
             <span className="text-zinc-400 text-lg flex-1 text-left truncate">{guestsToInvite.length > 1 ? guestsToInvite.length.toString() + ' guest(s)' : "Who will be on the trip?"}</span>
         </button>
 
-        <Button onClick={openConfirmTripModal}>
+        <Button onClick={createTrip}>
             Confirm trip    
             <ArrowRight className="size-5"/>
         </Button>

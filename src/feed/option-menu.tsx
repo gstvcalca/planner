@@ -6,7 +6,6 @@ interface OptionMenuProps {
 }
 
 export function OptionMenu({ currFilter, setFilter }: OptionMenuProps) {
-  console.log(currFilter);
 
   function handleDayTrip(){
     if(currFilter === "daytrip") {
@@ -37,7 +36,6 @@ export function OptionMenu({ currFilter, setFilter }: OptionMenuProps) {
 
   function handleSurprise(){
     setFilter(['daytrip', 'weekendtrip', 'cruisetrip'][Math.floor(Math.random()*3)]);
-    console.log(currFilter);
   }
 
   

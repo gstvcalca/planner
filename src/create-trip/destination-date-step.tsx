@@ -6,6 +6,7 @@ import { format } from 'date-fns'
 import "react-day-picker/dist/style.css"
 
 interface DestinationDateStepProps{
+    destination: string
     isGuestsInputOpen: boolean
     closeGuestsInput: () => void
     openGuestsInput: () => void
@@ -15,6 +16,7 @@ interface DestinationDateStepProps{
 }
 
 export function DestinationDateStep({
+    destination,
     isGuestsInputOpen,
     closeGuestsInput,
     openGuestsInput,
@@ -89,7 +91,7 @@ export function DestinationDateStep({
                 </Button>
 
                 ) : (
-                <Button onClick={openGuestsInput} >
+                <Button onClick={openGuestsInput} disabled={(!destination) ||(!eventDateObj?.from || !eventDateObj?.to)}>
                     Continue
                     <ArrowRight className="size-5"/>
                 </Button>

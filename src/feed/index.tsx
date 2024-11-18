@@ -13,8 +13,6 @@ export function FeedPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(logged_user);
-    console.log(!logged_user);
     if (Object.keys(logged_user).length === 0) {
       navigate("/");
     }

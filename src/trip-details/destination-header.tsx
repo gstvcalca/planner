@@ -19,7 +19,7 @@ export function DestinationHeader({
     const navigate = useNavigate();
 
     function handleNavigate(){
-        navigate('/feed/123');
+        navigate('/feed');
     }
 
     const displayDate = tripInfo && tripInfo.starts_at && tripInfo.ends_at

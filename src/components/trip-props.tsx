@@ -10,6 +10,6 @@ export interface TripProps{
     guests: {_id: string, name: string, email: string, img_url: string, is_confirmed: boolean}[]
     infos: {title: string, description: string}[]
     links: {title: string, url: string}[]
-    activities: {activity_date: Date, day_activities: {title: string, occurs_at: Date}[]}[]
+    activities: {_id: string, activity_date: string, day_activities: {title: string, occurs_at: string}[]}[]
     category: string
 }

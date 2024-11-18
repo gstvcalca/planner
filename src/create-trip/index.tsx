@@ -1,25 +1,23 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useContext, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { InviteGuestsModal } from './invite-guests-modal';
-import { ConfirmTripModal } from './confirm-trip-modal';
 import { DestinationDateStep } from './destination-date-step';
 import { GuestsInput } from './guests-input';
 import { DateRange } from 'react-day-picker';
 import { api } from '../lib/axios';
+import { MyContext } from '../context/context';
 
 export function CreateTripPage(){
     const navigate = useNavigate()
+    const {logged_user} = useContext(MyContext);
     const [isGuestsInputOpen, setGuestsInput] = useState(false);
     const [isGuestsModalOpen, setGuestsModal] = useState(false);
-    const [isConfirmTripModalOpen, setConfirmTripModal] = useState(false);
     const [guestsToInvite, setGuestsToInvite] = useState([
-        'gstv.calca@gmail.com',
+        'gustavo@planner.com',
         'teste@acme.com'
     ]);
 
     const [destination, setDestination] = useState('');
-    const [ownerName, setOwnerName] = useState('');
-    const [ownerEmail, setOwnerEmail] = useState('');
     const [eventDateObj, setEventDateObj] = useState<DateRange | undefined>()
 
     function openGuestsInput(){
@@ -43,14 +41,6 @@ export function CreateTripPage(){
         setGuestsToInvite(newList);
     }
 
-    function openConfirmTripModal(){
-        setConfirmTripModal(true);
-    }
-
-    function closeConfirmTripModal(){
-        setConfirmTripModal(false);
-    }
-
     function addNewGuest(event: FormEvent<HTMLFormElement>){
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -68,31 +58,20 @@ export function CreateTripPage(){
         event.currentTarget.reset();
     }
 
-    async function createTrip(event: FormEvent<HTMLFormElement>){
-        event.preventDefault();
-        console.log(destination);
-        console.log(ownerEmail);
-        console.log(ownerName);
-        console.log(eventDateObj);
-        console.log(guestsToInvite);
-
+    async function createTrip(){
         if (!destination) {return}
         if (!eventDateObj?.from || !eventDateObj?.to) {return}
         if (guestsToInvite.length === 0) {return}
-        if (!ownerName || !ownerEmail) {return}
 
         const response = await api.post('/trips', {
             destination: destination,
             starts_at: eventDateObj?.from,
             ends_at: eventDateObj?.to,
             emails_to_invite: guestsToInvite,
-            owner_name: ownerName,
-            owner_email: ownerEmail
+            created_by: logged_user
         })
-
-        const {tripId} = response.data
-
-        navigate(`/trips/${tripId}`);
+        const {_id} = response.data.trip
+        navigate(`/trips/${_id}`);
     }
 
     return (
@@ -105,6 +84,7 @@ export function CreateTripPage(){
 
             <div className="space-y-4 flex flex-col">
             <DestinationDateStep
+                destination={destination}
                 closeGuestsInput={closeGuestsInput}
                 isGuestsInputOpen={isGuestsInputOpen}
                 openGuestsInput={openGuestsInput}
@@ -116,7 +96,7 @@ export function CreateTripPage(){
             {isGuestsInputOpen && 
                 <GuestsInput
                     guestsToInvite={guestsToInvite}
-                    openConfirmTripModal={openConfirmTripModal}
+                    createTrip={createTrip}
                     openGuestsModal={openGuestsModal}
                 />
             }
@@ -131,17 +111,6 @@ export function CreateTripPage(){
             deleteGuest={deleteGuest}
             closeGuestsModal={closeGuestsModal}
             guestsToInvite={guestsToInvite}
-            />
-        )}
-
-        {isConfirmTripModalOpen && (
-            <ConfirmTripModal
-            closeConfirmTripModal={closeConfirmTripModal}
-            createTrip={createTrip}
-            setOwnerName={setOwnerName}
-            setOwnerEmail={setOwnerEmail}
-            destination={destination}
-            starts_at={eventDateObj?.from?.toString() || ''}
             />
         )}
         </div>
