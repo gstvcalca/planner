@@ -19,12 +19,12 @@ export function Activities({ tripInfo }: ActivitiesProps) {
   });
 
   return (
-    <div className="space-y-8 ">
+    <div className="space-y-8">
       {sortedActivities?.map((aDaySchedule) => {
         const activitydate = new Date(aDaySchedule.activity_date);
         return (
           <div
-            key={tripInfo?._id + aDaySchedule.activity_date}
+            key={aDaySchedule._id}
             className="space-y-2.5"
           >
             {" "}
@@ -46,7 +46,7 @@ export function Activities({ tripInfo }: ActivitiesProps) {
             ) : (
               aDaySchedule.day_activities.map((activity) => {
                 return (
-                  <div key={tripInfo?._id + activity.title} className="">
+                  <div key={activity._id} className="">
                     {" "}
                     {/* activity card */}
                     <div className="flex justify-between bg-zinc-900 p-1 rounded-lg shadow-shape px-4 py-2.5 items-center">

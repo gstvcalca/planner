@@ -1,13 +1,19 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserSchema } from "../components/user-schema";
 import { api } from "../lib/axios";
+import { MyContext } from "../context/context";
 
 export function ContactsMenu() {
+  const {logged_user} = useContext(MyContext);
   const [users, setUsers] = useState<UserSchema[]>([]);
+
+  function filterUsers(user: UserSchema[]){
+    return user.filter(item => item?.img_url?.length > 0 && item._id !== logged_user._id);
+  }
 
   useEffect(() => {
     api.get("/users").then((reply) => {
-      setUsers(reply.data.users);
+      setUsers(filterUsers(reply.data.users));
     });
   }, []);
 

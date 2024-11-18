@@ -2,7 +2,7 @@ import { createContext, ReactNode, useState } from "react";
 import { UserSchema } from "../components/user-schema";
 
 export const MyContext = createContext({
-  'logged_user': {},
+  'logged_user': {} ,
   setUser: (user: UserSchema) => {}
 });
 

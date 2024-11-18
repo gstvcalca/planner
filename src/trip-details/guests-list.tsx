@@ -9,8 +9,8 @@ interface GuestsListProps{
 }
 export function GuestsList({openAddGuestModal, tripInfo}: GuestsListProps){
     return (
-        <div className="space-y-6">
-            <h2 className="font-semibold text-xl">Guests</h2>
+        <div className="space-y-6 border-2 border-zinc-900 rounded-xl p-3">
+            <h2 className="font-semibold text-xl underline underline-offset-8">Guests</h2>
             {tripInfo?.guests.map((guest, index) => {
                 return (
                     <div key={guest.email + index} className="flex items-center justify-between gap-4"> {/* links list */}

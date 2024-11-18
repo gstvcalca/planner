@@ -89,14 +89,19 @@ export function TripDetailsPage() {
         <div className="flex-1 space-y-6">
           <div className="flex-1">
             <button className="w-full h-96" onClick={openChangeImgURLModal}>
-              <img src={tripInfo?.img_url} className="rounded-xl size-full" />
+              <img
+                src={tripInfo?.img_url}
+                className="rounded-xl size-full border-2 border-zinc-700"
+              />
             </button>
-            <button onClick={openChangeDescriptionModal}>
-              <p className="text-justify p-2 mt-2">{tripInfo?.description}</p>
+            <button onClick={openChangeDescriptionModal} className="w-full">
+              <p className="text-justify p-2 mt-2 border-2 border-zinc-900 rounded-xl">
+                {tripInfo?.description}
+              </p>
             </button>
           </div>
 
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between ">
             <h2 className="text-3xl font-semibold">Activities</h2>
             <Button onClick={openActivityModal}>
               Add
@@ -121,22 +126,31 @@ export function TripDetailsPage() {
       </main>
 
       {isNewActivityModalOpen && (
-        <CreateActivityModal 
+        <CreateActivityModal
           setTripInfo={setTripInfo}
           tripInfo={tripInfo}
-          closeActivityModal={closeActivityModal} />
+          closeActivityModal={closeActivityModal}
+        />
       )}
 
       {isAddGuestModalOpen && (
-        <AddGuestModal closeAddGuestModal={closeAddGuestModal} />
+        <AddGuestModal 
+        setTripInfo={setTripInfo}
+        tripInfo={tripInfo}
+        closeAddGuestModal={closeAddGuestModal} />
       )}
 
       {isAddLinkModalOpen && (
-        <AddLinkModal closeAddLinkModal={closeAddLinkModal} />
+        <AddLinkModal
+          tripInfo={tripInfo}
+          setTripInfo={setTripInfo}
+          closeAddLinkModal={closeAddLinkModal}
+        />
       )}
 
       {isChangeDestinationModalOpen && (
         <ChangeDestinationModal
+          setTripInfo={setTripInfo}
           closeChangeDestinationModal={closeChangeDestinationModal}
           tripInfo={tripInfo}
         />

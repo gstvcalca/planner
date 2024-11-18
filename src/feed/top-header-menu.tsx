@@ -5,9 +5,11 @@ import { useNavigate } from "react-router";
 interface topHeaderMenuProps{
     currSearch: string,
     setSearch:(txt: string) => void
+    userFilter: string
+    setUserFilter: (str: string) => void
 }
 
-export function TopHeaderMenu({currSearch, setSearch}: topHeaderMenuProps){
+export function TopHeaderMenu({currSearch, setSearch, setUserFilter, userFilter}: topHeaderMenuProps){
 
     const navigate = useNavigate();
 
@@ -32,9 +34,15 @@ export function TopHeaderMenu({currSearch, setSearch}: topHeaderMenuProps){
 
                 <div className="flex w-1/3 justify-around items-center">
                     {/* middle */}
-                    <button className="hover:text-zinc-50 hover:bg-zinc-700 p-2 rounded-xl flex gap-2 items-center">
+                    <button 
+                    onClick={() => {setUserFilter("others")}}
+                    className="hover:text-zinc-50 hover:bg-zinc-700 p-2 rounded-xl flex gap-2 items-center">
                         <Home className="size-8"/>
-                        Home
+                        {userFilter === "others" ? (
+                            <span className="underline underline-offset-8">Home</span>
+                        ): (
+                            <span>Home</span>
+                        )}
                     </button>
 
                     <button onClick={handleNavigateCreateTrip}className="flex hover:text-zinc-50 hover:bg-zinc-700 p-2 rounded-xl items-center gap-2">
@@ -42,9 +50,18 @@ export function TopHeaderMenu({currSearch, setSearch}: topHeaderMenuProps){
                         Create a new trip
                     </button>
                     
-                    <button className="hover:text-zinc-50  hover:bg-zinc-700 p-2 rounded-xl flex gap-2 items-center">
+                    <button 
+                    onClick={() => {setUserFilter("mine")}}
+                    className="hover:text-zinc-50  hover:bg-zinc-700 p-2 rounded-xl flex gap-2 items-center">
                         <ContactRound className="size-8"/>
-                        See my trips
+                        {userFilter === 'mine' ? (
+                            <span className="underline underline-offset-8">See my trips</span>
+                        ) :
+                        (
+                            <span>See My trips</span>
+                        )
+                        }
+                        
                     </button>                   
                 </div>
 

@@ -9,6 +9,7 @@ import { useNavigate } from "react-router";
 export function FeedPage() {
   const [currFilter, setFilter] = useState("all");
   const [currSearch, setSearch] = useState("");
+  const [userFilter, setUserFilter] = useState('others');
   const { logged_user } = useContext(MyContext);
   const navigate = useNavigate();
 
@@ -20,12 +21,12 @@ export function FeedPage() {
 
   return (
     <div className="min-h-screen flex justify-center bg-pattern bg-repeat-space bg-center">
-      <TopHeaderMenu currSearch={currSearch} setSearch={setSearch} />
+      <TopHeaderMenu setUserFilter={setUserFilter} userFilter={userFilter} currSearch={currSearch} setSearch={setSearch}  />
       <div className="flex justify-around mt-16 w-full px-3 gap-36 mb-3">
         {" "}
         {/* main container div */}
         <OptionMenu currFilter={currFilter} setFilter={setFilter} />
-        <FeedElement currFilter={currFilter} currSearch={currSearch} />
+        <FeedElement userFilter={userFilter} currFilter={currFilter} currSearch={currSearch} />
         <ContactsMenu />
       </div>
     </div>

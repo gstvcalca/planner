@@ -11,7 +11,7 @@ export function SelectUserPage() {
   const navigate = useNavigate();
   const [isCreateUserModalOpen, setIsCreateUserModal] = useState(false);
   const { setUser } = useContext(MyContext);
-
+  const [users, setUsers] = useState<UserSchema[] | undefined>([]);
   function openCreateUserModal() {
     setIsCreateUserModal(true);
   }
@@ -25,17 +25,18 @@ export function SelectUserPage() {
     navigate("/feed/");
   }
 
-  const [users, setUsers] = useState<UserSchema[] | undefined>([]);
+  function filterUsers(user: UserSchema[]){
+    return user.filter(item => item?.img_url?.length > 0)
+  }
 
   useEffect(() => {
-    api.get("/users").then((response) => setUsers(response.data.users));
+    api.get("/users").then((response) => setUsers(filterUsers(response.data.users)));
   }, []);
 
   async function handleDelete(id: string) {
-    const user = await api.delete("/users/" + id);
-
-    window.document.location.reload();
-    console.log(user);
+    await api.delete("/users/" + id);
+    const users = await api.get("/users");
+    setUsers(filterUsers(users.data.users));
   }
 
   return (
@@ -76,7 +77,7 @@ export function SelectUserPage() {
         </div>
       </div>
       {isCreateUserModalOpen && (
-        <CreateUserModal closeCreateUserModal={closeCreateUserModal} />
+        <CreateUserModal setUsers={setUsers} closeCreateUserModal={closeCreateUserModal} />
       )}
     </div>
   );

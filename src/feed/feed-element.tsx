@@ -1,18 +1,21 @@
 import { useNavigate } from "react-router";
 import { TripProps } from "./../components/trip-props";
 import { format } from "date-fns";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { api } from "../lib/axios";
+import { MyContext } from "../context/context";
 
 
 interface FeedElementProps{
   currFilter: string
   currSearch: string
+  userFilter: string
 }
 
-export function FeedElement({currFilter, currSearch}: FeedElementProps) {
+export function FeedElement({currFilter, currSearch, userFilter}: FeedElementProps) {
   const navigate = useNavigate();
   const [trips, setTrips] = useState<TripProps[]>([]);
+  const {logged_user} = useContext(MyContext);
 
   useEffect(() => {
     api.get("/trips").then((reply) => {
@@ -23,7 +26,11 @@ export function FeedElement({currFilter, currSearch}: FeedElementProps) {
   const displayTrips = trips.filter((trip) => {
     const matchesCategory = trip.category === currFilter || currFilter === "all";
     const matchesText = trip.destination.toLowerCase().includes(currSearch.toLowerCase());
-    return matchesCategory && matchesText;
+    if(userFilter === "mine"){
+      const matchesUser = trip.created_by._id === logged_user._id;
+      return matchesCategory && matchesText && matchesUser;
+    }
+    return matchesCategory && matchesText && trip.created_by._id !== logged_user._id;
   })
   
 
