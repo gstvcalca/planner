@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { UserSchema } from "../components/user-schema";
-import { api } from "../lib/axios";
-import { MyContext } from "../context/context";
+import { api } from "../components/axios";
+import { MyContext } from './../components/context';
 
 export function ContactsMenu() {
   const {logged_user} = useContext(MyContext);

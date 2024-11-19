@@ -1,7 +1,7 @@
 import { Calendar, Plus, Tag, X } from "lucide-react";
 import { Button } from "../components/button";
 import { FormEvent } from "react";
-import { api } from "../lib/axios";
+import { api } from "../components/axios";
 import { TripProps } from "../components/trip-props";
 import { format } from "date-fns";
 

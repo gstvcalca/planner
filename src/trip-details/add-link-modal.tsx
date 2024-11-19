@@ -1,7 +1,7 @@
 import { Info, Link2, Plus, Tag, X } from "lucide-react";
 import { Button } from "../components/button";
 import { FormEvent, useState } from "react";
-import { api } from "../lib/axios";
+import { api } from "../components/axios";
 import { TripProps } from "../components/trip-props";
 
 interface AddLinkModalProps {

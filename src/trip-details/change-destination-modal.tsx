@@ -4,7 +4,7 @@ import { Button } from "../components/button";
 import { FormEvent, useState } from "react";
 import { format } from "date-fns";
 import { InputContainer } from "../components/input-container";
-import { api } from "../lib/axios";
+import { api } from "../components/axios";
 import { TripProps } from "../components/trip-props";
 
 interface ChangeDestinationModalProps {

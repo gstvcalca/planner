@@ -11,7 +11,7 @@ import { AddLinkModal } from "./add-link-modal";
 import { ChangeDestinationModal } from "./change-destination-modal";
 import { TripProps } from "../components/trip-props";
 import { useParams } from "react-router";
-import { api } from "../lib/axios";
+import { api } from "../components/axios";
 import { ChangeImgURLModal } from "./change-img-modal";
 import { ChangeDescriptionModal } from "./change-description-modal";
 

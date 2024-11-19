@@ -4,8 +4,8 @@ import { InviteGuestsModal } from './invite-guests-modal';
 import { DestinationDateStep } from './destination-date-step';
 import { GuestsInput } from './guests-input';
 import { DateRange } from 'react-day-picker';
-import { api } from '../lib/axios';
-import { MyContext } from '../context/context';
+import { api } from '../components/axios';
+import { MyContext } from '../components/context';
 
 export function CreateTripPage(){
     const navigate = useNavigate()

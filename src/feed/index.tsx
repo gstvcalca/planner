@@ -3,8 +3,8 @@ import { OptionMenu } from "./option-menu";
 import { ContactsMenu } from "./contacts-menu";
 import { TopHeaderMenu } from "./top-header-menu";
 import { useContext, useEffect, useState } from "react";
-import { MyContext } from "../context/context";
 import { useNavigate } from "react-router";
+import { MyContext } from './../components/context';
 
 export function FeedPage() {
   const [currFilter, setFilter] = useState("all");

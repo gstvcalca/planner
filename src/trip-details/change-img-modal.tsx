@@ -2,7 +2,7 @@ import { CircleCheck, Image, X } from "lucide-react";
 import { InputContainer } from "../components/input-container";
 import { Button } from "../components/button";
 import { FormEvent } from "react";
-import { api } from "../lib/axios";
+import { api } from "../components/axios";
 import { TripProps } from "../components/trip-props";
 
 interface ChangeImgModalProps {

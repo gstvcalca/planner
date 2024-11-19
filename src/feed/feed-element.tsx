@@ -2,8 +2,8 @@ import { useNavigate } from "react-router";
 import { TripProps } from "./../components/trip-props";
 import { format } from "date-fns";
 import { useContext, useEffect, useState } from "react";
-import { api } from "../lib/axios";
-import { MyContext } from "../context/context";
+import { api } from "../components/axios";
+import { MyContext } from "../components/context";
 
 
 interface FeedElementProps{
