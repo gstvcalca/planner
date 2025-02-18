@@ -7,6 +7,7 @@ import { CreateTripPage } from "./create-trip";
 import { TripDetailsPage } from "./trip-details";
 import { SelectUserPage } from "./select-user";
 import { FeedPage } from "./feed";
+import { SiteMapPage } from "./sitemap";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/feed",
     element: <FeedPage/>
+  },
+  {
+    path: "/sitemap",
+    element: <SiteMapPage/>
   }
 ]);
 
