@@ -88,8 +88,8 @@ export function OptionMenu({ currFilter, setFilter }: OptionMenuProps) {
       <p className="gap-3">
         <span>Privacy - </span>
         <span>Terms - </span>
-        <a href="/#" onClick={handleNavigate}><span className="underline underline-offset-8">Site map - </span></a>
-        <a href="/sitemap"><span className="underline underline-offset-8">Cookies</span></a>
+        <a onClick={handleNavigate}><span className="underline underline-offset-4 cursor-pointer">Site map - </span></a>
+        <a href="/sitemap"><span className="underline underline-offset-4">Cookies</span></a>
       </p>
     </div>
   );

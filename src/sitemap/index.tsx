@@ -8,17 +8,17 @@ export function SiteMapPage() {
         </div>
 
         <div className="space-y-4 flex flex-col">
-          <h3 className="text-xl font-bold underline underline-offset-8">Login page</h3>
+          <h3 className="text-xl font-bold underline underline-offset-4">Login page</h3>
           <p>User creation</p>
           <p>User login</p>
 
-          <h3 className="text-xl font-bold underline underline-offset-8">Feed page</h3>
+          <h3 className="text-xl font-bold underline underline-offset-4">Feed page</h3>
           <p>Create a new trip</p>
           <p>See available trips</p>
           <p>See trips created by me</p>
           <p>See contacts list</p>
 
-          <h3 className="text-xl font-bold underline underline-offset-8">Trip detail page</h3>
+          <h3 className="text-xl font-bold underline underline-offset-4">Trip detail page</h3>
           <p>See trip owner</p>
           <p>See trip agenda</p>
           <p>See trip date</p>
