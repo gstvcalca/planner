@@ -1,4 +1,5 @@
 import { Anchor, ArrowRightLeft, Calendar, CircleHelp } from "lucide-react";
+import { useNavigate } from "react-router";
 
 interface OptionMenuProps {
   currFilter: string;
@@ -34,6 +35,11 @@ export function OptionMenu({ currFilter, setFilter }: OptionMenuProps) {
     setFilter(
       ["daytrip", "weekendtrip", "cruisetrip"][Math.floor(Math.random() * 3)]
     );
+  }
+
+  const navigate = useNavigate();
+  function handleNavigate(){
+    navigate("/sitemap");
   }
 
   return (
@@ -80,10 +86,10 @@ export function OptionMenu({ currFilter, setFilter }: OptionMenuProps) {
       </button>
       <img src="/logo.svg" aria-label="plann.er" className="w-28 m-auto" />
       <p className="gap-3">
-        <span>Privacy</span>
-        <span>Terms</span>
-        <a href="/sitemap"><span>Site map</span></a>
-        <span>Cookies</span>
+        <span>Privacy - </span>
+        <span>Terms - </span>
+        <a onClick={handleNavigate}><span>Site map - </span></a>
+        <a href="/sitemap"><span>Cookies</span></a>
       </p>
     </div>
   );
