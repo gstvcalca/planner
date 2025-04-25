@@ -1,5 +1,4 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
 import { CreateTripPage } from "./create-trip";
 import { TripDetailsPage } from "./trip-details";
 import { SelectUserPage } from "./select-user";
@@ -9,7 +8,7 @@ import { SiteMapPage } from "./sitemap";
 const router = createBrowserRouter(
   [
     {
-      path: "",
+      path: "/",
       element: <SelectUserPage />,
     },
     {
@@ -28,10 +27,7 @@ const router = createBrowserRouter(
       path: "/sitemap",
       element: <SiteMapPage />,
     },
-  ],
-  {
-    basename: "/planner",
-  }
+  ]
 );
 
 export function App() {
